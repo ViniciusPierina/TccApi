@@ -20,6 +20,12 @@ namespace Services.Mappings
             CreateMap<UpdateAgendamentoCommand, UpdateAgendamentoDTO>().ReverseMap();
             CreateMap<Agendamento, CreateAgendamentoCommand>().ReverseMap();
             CreateMap<Agendamento, UpdateAgendamentoCommand>().ReverseMap();
+
+            CreateMap<Contrato, ContratoDTO>().ReverseMap();
+            CreateMap<CreateContratoCommand, CreateContratoDTO>().ReverseMap();
+            CreateMap<UpdateContratoCommand, UpdateContratoDTO>().ReverseMap();
+            CreateMap<Contrato, CreateContratoCommand>().ReverseMap();
+            CreateMap<Contrato, UpdateContratoCommand>().ReverseMap();
         }
     }
 }
