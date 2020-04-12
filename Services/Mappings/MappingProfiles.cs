@@ -26,6 +26,12 @@ namespace Services.Mappings
             CreateMap<UpdateContratoCommand, UpdateContratoDTO>().ReverseMap();
             CreateMap<Contrato, CreateContratoCommand>().ReverseMap();
             CreateMap<Contrato, UpdateContratoCommand>().ReverseMap();
+
+            CreateMap<Medico, MedicoDTO>().ReverseMap();
+            CreateMap<CreateMedicoCommand, CreateMedicoDTO>().ReverseMap();
+            CreateMap<UpdateMedicoCommand, UpdateMedicoDTO>().ReverseMap();
+            CreateMap<Medico, CreateMedicoCommand>().ReverseMap();
+            CreateMap<Medico, UpdateMedicoCommand>().ReverseMap();
         }
     }
 }
