@@ -6,18 +6,18 @@ namespace Domain.Models
     [Table("cadprest")]
     public class Medico : BaseModel
     {
-        public string codprest { get; set; }
-        public string nomeprest { get; set; }
-        public string tipoprest { get; set; }
-        public string endprest { get; set; }
-        public string baiprest { get; set; }
-        public string cidprest { get; set; }
-        public string categprest { get; set; }
-        public string foneprest { get; set; }
-        public string codesp { get; set; }
-        public long status { get; set; }
-        public string conselho { get; set; }
-        public string rede { get; set; }
-        public string crmprest { get; set; }
+        public string Codprest { get; set; }
+        public string Nomeprest { get; set; }
+        public string Tipoprest { get; set; }
+        public string Endprest { get; set; }
+        public string Baiprest { get; set; }
+        public string Cidprest { get; set; }
+        public string Categprest { get; set; }
+        public string Foneprest { get; set; }
+        public string Codesp { get; set; }
+        public long Status { get; set; }
+        public string Conselho { get; set; }
+        public string Rede { get; set; }
+        public string Crmprest { get; set; }
     }
 }
