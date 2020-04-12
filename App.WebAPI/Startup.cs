@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using Core.CQRS;
 using Domain.Commands;
@@ -14,13 +10,11 @@ using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Services.Mappings;
 using Services.Services;
@@ -44,9 +38,11 @@ namespace App.WebAPI
 
             services.AddScoped<IGuiaService, GuiaService>();
             services.AddScoped<IAgendamentoService, AgendamentoService>();
+            services.AddScoped<IContratoService, ContratoService>();
 
             services.AddScoped<IRepository<Guia>, Repository<Guia>>();
             services.AddScoped<IRepository<Agendamento>, Repository<Agendamento>>();
+            services.AddScoped<IRepository<Contrato>, Repository<Contrato>>();
 
             services.AddScoped<IHandler<CreateGuiaCommand>, GuiaCommandHandler>();
             services.AddScoped<IHandler<UpdateGuiaCommand>, GuiaCommandHandler>();
@@ -55,6 +51,10 @@ namespace App.WebAPI
             services.AddScoped<IHandler<CreateAgendamentoCommand>, AgendamentoCommandHandler>();
             services.AddScoped<IHandler<UpdateAgendamentoCommand>, AgendamentoCommandHandler>();
             services.AddScoped<IHandler<RemoveAgendamentoCommand>, AgendamentoCommandHandler>();
+
+            services.AddScoped<IHandler<CreateContratoCommand>, ContratoCommandHandler>();
+            services.AddScoped<IHandler<UpdateContratoCommand>, ContratoCommandHandler>();
+            services.AddScoped<IHandler<RemoveContratoCommand>, ContratoCommandHandler>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
