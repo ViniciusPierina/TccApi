@@ -16,5 +16,6 @@ namespace Infrastructure.Configurations
         public DbSet<Agendamento> Agendamentos { get; set; }
         public DbSet<Contrato> Contratos { get; set; }
         public DbSet<Medico> Medicos { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
     }
 }
