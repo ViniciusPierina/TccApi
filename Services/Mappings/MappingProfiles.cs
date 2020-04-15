@@ -32,6 +32,12 @@ namespace Services.Mappings
             CreateMap<UpdateMedicoCommand, UpdateMedicoDTO>().ReverseMap();
             CreateMap<Medico, CreateMedicoCommand>().ReverseMap();
             CreateMap<Medico, UpdateMedicoCommand>().ReverseMap();
+
+            CreateMap<Usuario, UsuarioDTO>().ReverseMap();
+            CreateMap<CreateUsuarioCommand, CreateUsuarioDTO>().ReverseMap();
+            CreateMap<UpdateUsuarioCommand, UpdateUsuarioDTO>().ReverseMap();
+            CreateMap<Usuario, CreateUsuarioCommand>().ReverseMap();
+            CreateMap<Usuario, UpdateUsuarioCommand>().ReverseMap();
         }
     }
 }
