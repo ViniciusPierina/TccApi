@@ -7,7 +7,7 @@ namespace Domain.Commands
     public class CreateUsuarioCommand : Command
     {
         public CreateUsuarioCommand(string codUsu, string nome, string cpf, string status, string sexo,
-            string situUsu, Contrato contrato, Guid contratoId)
+            string situUsu)
         {
             CodUsu = codUsu;
             Nome = nome;
@@ -15,8 +15,6 @@ namespace Domain.Commands
             Status = status;
             Sexo = sexo;
             Situusu = situUsu;
-            Contrato = contrato;
-            ContratoId = contratoId;
         }
         public string CodUsu { get; set; }
         public string Nome { get; set; }
@@ -24,7 +22,5 @@ namespace Domain.Commands
         public string Status { get; set; }
         public string Sexo { get; set; }
         public string Situusu { get; set; }
-        public Contrato Contrato { get; set; }
-        public Guid ContratoId { get; set; }
     }
 }

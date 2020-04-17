@@ -13,7 +13,5 @@ namespace Domain.Models
         public string Status { get; set; }
         public string Sexo { get; set; }
         public string Situusu { get; set; }
-        public Contrato Contrato { get; set; }
-        public Guid ContratoId { get; set; }
     }
 }

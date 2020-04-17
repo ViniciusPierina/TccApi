@@ -7,7 +7,7 @@ namespace Domain.Commands
     public class UpdateUsuarioCommand : Command
     {
         public UpdateUsuarioCommand(Guid id, string codUsu, string nome, string cpf, string status, string sexo,
-            string situUsu, Contrato contrato, Guid contratoId)
+            string situUsu)
         {
             Id = id;
             CodUsu = codUsu;
@@ -16,8 +16,6 @@ namespace Domain.Commands
             Status = status;
             Sexo = sexo;
             Situusu = situUsu;
-            Contrato = contrato;
-            ContratoId = contratoId;
         }
         public Guid Id { get; set; }
         public string CodUsu { get; set; }
@@ -26,7 +24,5 @@ namespace Domain.Commands
         public string Status { get; set; }
         public string Sexo { get; set; }
         public string Situusu { get; set; }
-        public Contrato Contrato { get; set; }
-        public Guid ContratoId { get; set; }
     }
 }
