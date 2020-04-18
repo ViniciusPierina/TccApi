@@ -41,12 +41,14 @@ namespace App.WebAPI
             services.AddScoped<IContratoService, ContratoService>();
             services.AddScoped<IMedicoService, MedicoService>();
             services.AddScoped<IUsuarioService, UsuarioService>();
+            services.AddScoped<IEspecialidadeService, EspecialidadeService>();
 
             services.AddScoped<IRepository<Guia>, Repository<Guia>>();
             services.AddScoped<IRepository<Agendamento>, Repository<Agendamento>>();
             services.AddScoped<IRepository<Contrato>, Repository<Contrato>>();
             services.AddScoped<IRepository<Medico>, Repository<Medico>>();
             services.AddScoped<IRepository<Usuario>, Repository<Usuario>>();
+            services.AddScoped<IRepository<Especialidade>, Repository<Especialidade>>();
 
             services.AddScoped<IHandler<CreateGuiaCommand>, GuiaCommandHandler>();
             services.AddScoped<IHandler<UpdateGuiaCommand>, GuiaCommandHandler>();
@@ -67,6 +69,10 @@ namespace App.WebAPI
             services.AddScoped<IHandler<CreateUsuarioCommand>, UsuarioCommandHandler>();
             services.AddScoped<IHandler<UpdateUsuarioCommand>, UsuarioCommandHandler>();
             services.AddScoped<IHandler<RemoveUsuarioCommand>, UsuarioCommandHandler>();
+
+            services.AddScoped<IHandler<CreateEspecialidadeCommand>, EspecialidadeCommandHandler>();
+            services.AddScoped<IHandler<UpdateEspecialidadeCommand>, EspecialidadeCommandHandler>();
+            services.AddScoped<IHandler<RemoveEspecialidadeCommand>, EspecialidadeCommandHandler>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Services.Services.Interfaces
 {
-    public interface IEspecialidade
+    public interface IEspecialidadeService
     {
         void Save(CreateEspecialidadeDTO model);
         void Update(UpdateEspecialidadeDTO model);

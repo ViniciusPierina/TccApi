@@ -11,7 +11,7 @@ using System.Text;
 
 namespace Services.Services
 {
-    public class EspecialidadeService : IEspecialidade
+    public class EspecialidadeService : IEspecialidadeService
     {
         private readonly IRepository<Especialidade> _repository;
         private readonly IMapper _mapper;
