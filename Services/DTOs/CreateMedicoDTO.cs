@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -19,5 +20,7 @@ namespace Services.DTOs
         public string Conselho { get; set; }
         public string Rede { get; set; }
         public string Crmprest { get; set; }
+        public Especialidade Especialidade { get; set; }
+        public Guid EspecialidadeId { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Core.Models;
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Models
@@ -19,5 +20,7 @@ namespace Domain.Models
         public string Conselho { get; set; }
         public string Rede { get; set; }
         public string Crmprest { get; set; }
+        public Especialidade Especialidade { get; set; }
+        public Guid EspecialidadeId { get; set; }
     }
 }
