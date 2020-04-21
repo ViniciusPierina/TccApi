@@ -24,6 +24,9 @@ namespace Infrastructure.Configurations
             builder.Entity<Medico>().HasKey(x => x.Id);
             builder.Entity<Especialidade>().HasKey(x => x.Id);
             builder.Entity<Agendamento>().HasKey(x => x.Id);
+            builder.Entity<Agendamento>().Property(x => x.Id).ValueGeneratedOnAdd();
+            builder.Entity<Medico>().Property(x => x.Id).ValueGeneratedOnAdd();
+            builder.Entity<Especialidade>().Property(x => x.Id).ValueGeneratedOnAdd();
             builder.Entity<Medico>().HasOne(x => x.Especialidade).WithMany(x => x.Medicos);
             builder.Entity<Medico>().HasMany(x => x.Agendamentos).WithOne(x => x.Medico);
         }

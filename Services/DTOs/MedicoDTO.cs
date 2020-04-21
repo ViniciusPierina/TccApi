@@ -21,7 +21,7 @@ namespace Services.DTOs
         public string Rede { get; set; }
         public string Crmprest { get; set; }
         public Especialidade Especialidade { get; set; }
-        public Guid EspecialidadeId { get; set; }
+        //public Guid EspecialidadeId { get; set; }
         public ICollection<Agendamento> Agendamentos { get; set; }
     }
 }

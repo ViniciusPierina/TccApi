@@ -7,14 +7,14 @@ namespace Domain.Commands
     public class CreateAgendamentoCommand : Command
     {
         public CreateAgendamentoCommand(int codigo, int codMedico, DateTime dataConsulta, DateTime horaConsulta,
-            bool status, Medico medico)
+            bool status)
         {
             Codigo = codigo;
             CodMedico = codMedico;
             DataConsulta = dataConsulta;
             HoraConsulta = horaConsulta;
             Status = status;
-            Medico = medico;
+            //Medico = medico;
         }
         public int Codigo { get; set; }
         public int CodMedico { get; set; }

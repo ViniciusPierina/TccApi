@@ -26,9 +26,9 @@ namespace Domain.Commands
             Conselho = conselho;
             Rede = rede;
             Crmprest = crmPrest;
-            Especialidade = especialidade;
-            EspecialidadeId = especialidadeId;
-            Agendamentos = agendamentos;
+            //Especialidade = especialidade;
+            //EspecialidadeId = especialidadeId;
+            //Agendamentos = agendamentos;
         }
         public Guid Id { get; set; }
         public string Codprest { get; set; }
@@ -45,7 +45,7 @@ namespace Domain.Commands
         public string Rede { get; set; }
         public string Crmprest { get; set; }
         public Especialidade Especialidade { get; set; }
-        public Guid EspecialidadeId { get; set; }
+        //public Guid EspecialidadeId { get; set; }
         public ICollection<Agendamento> Agendamentos { get; set; }
     }
 }
