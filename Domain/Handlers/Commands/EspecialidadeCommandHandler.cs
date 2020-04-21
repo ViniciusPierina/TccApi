@@ -7,13 +7,13 @@ using System;
 
 namespace Domain.Handlers.Commands
 {
-    public class EspecialidadeCommandHanlder : IHandler<CreateEspecialidadeCommand>,
+    public class EspecialidadeCommandHandler : IHandler<CreateEspecialidadeCommand>,
         IHandler<UpdateEspecialidadeCommand>,
         IHandler<RemoveEspecialidadeCommand>
     {
         private readonly IRepository<Especialidade> _repository;
         private readonly IMapper _mapper;
-        public EspecialidadeCommandHanlder(IRepository<Especialidade> repository, IMapper mapper)
+        public EspecialidadeCommandHandler(IRepository<Especialidade> repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
