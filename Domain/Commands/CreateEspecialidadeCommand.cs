@@ -1,20 +1,22 @@
 ﻿using Core.CQRS;
-using System;
+using Domain.Models;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Domain.Commands
 {
     public class CreateEspecialidadeCommand : Command
     {
-        public CreateEspecialidadeCommand(string codeSpec, string desceSpec, string status)
+        public CreateEspecialidadeCommand(string codeSpec, string desceSpec, string status,
+            ICollection<Medico> medicos)
         {
             Codespec = codeSpec;
             Descespec = desceSpec;
             Status = status;
+            Medicos = medicos;
         }
         public string Codespec { get; set; }
         public string Descespec { get; set; }
         public string Status { get; set; }
+        public ICollection<Medico> Medicos { get; set; }
     }
 }

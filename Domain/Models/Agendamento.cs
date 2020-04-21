@@ -12,5 +12,6 @@ namespace Domain.Models
         public DateTime DataConsulta { get; set; }
         public DateTime HoraConsulta { get; set; }
         public bool Status { get; set; }
+        public Medico Medico { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Core.Models;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Models
@@ -9,5 +10,6 @@ namespace Domain.Models
         public string Codespec { get; set; }
         public string Descespec { get; set; }
         public string Status { get; set; }
+        public ICollection<Medico> Medicos { get; set; }
     }
 }

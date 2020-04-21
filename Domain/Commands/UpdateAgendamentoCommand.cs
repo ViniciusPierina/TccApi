@@ -1,4 +1,5 @@
 ﻿using Core.CQRS;
+using Domain.Models;
 using System;
 
 namespace Domain.Commands
@@ -6,7 +7,7 @@ namespace Domain.Commands
     public class UpdateAgendamentoCommand : Command
     {
         public UpdateAgendamentoCommand(Guid id, int codigo, int codMedico, DateTime dataConsulta, DateTime horaConsulta,
-            bool status)
+            bool status, Medico medico)
         {
             Id = id;
             Codigo = codigo;
@@ -14,6 +15,7 @@ namespace Domain.Commands
             DataConsulta = dataConsulta;
             HoraConsulta = horaConsulta;
             Status = status;
+            Medico = medico;
         }
         public Guid Id { get; set; }
         public int Codigo { get; set; }
@@ -21,5 +23,6 @@ namespace Domain.Commands
         public DateTime DataConsulta { get; set; }
         public DateTime HoraConsulta { get; set; }
         public bool Status { get; set; }
+        public Medico Medico { get; set; }
     }
 }

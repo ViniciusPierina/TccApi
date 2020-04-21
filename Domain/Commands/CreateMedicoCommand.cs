@@ -1,6 +1,7 @@
 ﻿using Core.CQRS;
 using Domain.Models;
 using System;
+using System.Collections.Generic;
 
 namespace Domain.Commands
 {
@@ -8,7 +9,7 @@ namespace Domain.Commands
     {
         public CreateMedicoCommand(string codPrest, string nomePrest, string tipoPrest, string endPrest, string baiPrest, 
             string cidPrest, string categPrest, string fonePrest, string codeSp, long status, string conselho,
-            string rede, string crmPrest, Especialidade especialidade, Guid especialidadeId)
+            string rede, string crmPrest, Especialidade especialidade, Guid especialidadeId, ICollection<Agendamento> agendamentos)
         {
             Codprest = codPrest;
             Nomeprest = nomePrest;
@@ -25,6 +26,7 @@ namespace Domain.Commands
             Crmprest = crmPrest;
             Especialidade = especialidade;
             EspecialidadeId = especialidadeId;
+            Agendamentos = agendamentos;
     }
         public string Codprest { get; set; }
         public string Nomeprest { get; set; }
@@ -41,5 +43,6 @@ namespace Domain.Commands
         public string Crmprest { get; set; }
         public Especialidade Especialidade { get; set; }
         public Guid EspecialidadeId { get; set; }
+        public ICollection<Agendamento> Agendamentos { get; set; }
     }
 }

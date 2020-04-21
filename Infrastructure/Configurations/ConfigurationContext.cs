@@ -18,5 +18,14 @@ namespace Infrastructure.Configurations
         public DbSet<Medico> Medicos { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Especialidade> Especialidades { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Medico>().HasKey(x => x.Id);
+            builder.Entity<Especialidade>().HasKey(x => x.Id);
+            builder.Entity<Agendamento>().HasKey(x => x.Id);
+            builder.Entity<Medico>().HasOne(x => x.Especialidade).WithMany(x => x.Medicos);
+            builder.Entity<Medico>().HasMany(x => x.Agendamentos).WithOne(x => x.Medico);
+        }
     }
 }
