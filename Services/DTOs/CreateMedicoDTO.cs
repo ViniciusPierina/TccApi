@@ -1,7 +1,6 @@
 ﻿using Domain.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Services.DTOs
 {
@@ -22,5 +21,6 @@ namespace Services.DTOs
         public string Crmprest { get; set; }
         public Especialidade Especialidade { get; set; }
         public Guid EspecialidadeId { get; set; }
+        public ICollection<Agendamento> Agendamentos { get; set; }
     }
 }
