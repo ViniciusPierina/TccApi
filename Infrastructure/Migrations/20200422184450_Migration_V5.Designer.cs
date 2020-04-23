@@ -4,14 +4,16 @@ using Infrastructure.Configurations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ConfigurationContext))]
-    partial class ConfigurationContextModelSnapshot : ModelSnapshot
+    [Migration("20200422184450_Migration_V5")]
+    partial class Migration_V5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,7 +45,7 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("HoraConsulta")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("MedicoId")
+                    b.Property<Guid?>("MedicoId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("Status")
@@ -226,7 +228,7 @@ namespace Infrastructure.Migrations
                     b.Property<string>("Endprest")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("EspecialidadeId")
+                    b.Property<Guid?>("EspecialidadeId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Foneprest")
@@ -298,18 +300,14 @@ namespace Infrastructure.Migrations
                 {
                     b.HasOne("Domain.Models.Medico", "Medico")
                         .WithMany("Agendamentos")
-                        .HasForeignKey("MedicoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MedicoId");
                 });
 
             modelBuilder.Entity("Domain.Models.Medico", b =>
                 {
                     b.HasOne("Domain.Models.Especialidade", "Especialidade")
                         .WithMany("Medicos")
-                        .HasForeignKey("EspecialidadeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EspecialidadeId");
                 });
 #pragma warning restore 612, 618
         }

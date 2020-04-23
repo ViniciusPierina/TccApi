@@ -22,7 +22,7 @@ namespace Infrastructure.Repositories
             _context.SaveChanges();
         }
 
-        public T Find(Guid id)
+        public virtual T Find(Guid id)
         {
             return _context.Set<T>().FirstOrDefault(t => t.Id == id);
         }

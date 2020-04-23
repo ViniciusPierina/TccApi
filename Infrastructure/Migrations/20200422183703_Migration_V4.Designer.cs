@@ -4,14 +4,16 @@ using Infrastructure.Configurations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ConfigurationContext))]
-    partial class ConfigurationContextModelSnapshot : ModelSnapshot
+    [Migration("20200422183703_Migration_V4")]
+    partial class Migration_V4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,7 +45,7 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("HoraConsulta")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("MedicoId")
+                    b.Property<Guid?>("MedicoId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("Status")
@@ -52,9 +54,6 @@ namespace Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("MedicoId");
-
-                    b.HasIndex("DataConsulta", "CodMedico")
-                        .HasAnnotation("SqlServer:Clustered", false);
 
                     b.ToTable("Agendamentos");
                 });
@@ -66,7 +65,7 @@ namespace Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Codtit")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Cpftit")
                         .HasColumnType("nvarchar(max)");
@@ -85,10 +84,6 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Codtit")
-                        .IsUnique()
-                        .HasFilter("[Codtit] IS NOT NULL");
-
                     b.ToTable("Contratos");
                 });
 
@@ -99,7 +94,7 @@ namespace Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Codespec")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
@@ -114,10 +109,6 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Codespec")
-                        .IsUnique()
-                        .HasFilter("[Codespec] IS NOT NULL");
 
                     b.ToTable("Especialidades");
                 });
@@ -184,9 +175,6 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CodPaciente", "CodEspecMedico", "CodProcedimento")
-                        .HasAnnotation("SqlServer:Clustered", false);
-
                     b.ToTable("Guias");
                 });
 
@@ -209,7 +197,7 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Codprest")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Conselho")
                         .HasColumnType("nvarchar(max)");
@@ -226,7 +214,7 @@ namespace Infrastructure.Migrations
                     b.Property<string>("Endprest")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("EspecialidadeId")
+                    b.Property<Guid?>("EspecialidadeId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Foneprest")
@@ -246,10 +234,6 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Codprest")
-                        .IsUnique()
-                        .HasFilter("[Codprest] IS NOT NULL");
-
                     b.HasIndex("EspecialidadeId");
 
                     b.ToTable("Medicos");
@@ -262,7 +246,7 @@ namespace Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CodUsu")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Cpf")
                         .HasColumnType("nvarchar(max)");
@@ -287,10 +271,6 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CodUsu")
-                        .IsUnique()
-                        .HasFilter("[CodUsu] IS NOT NULL");
-
                     b.ToTable("Usuarios");
                 });
 
@@ -298,18 +278,14 @@ namespace Infrastructure.Migrations
                 {
                     b.HasOne("Domain.Models.Medico", "Medico")
                         .WithMany("Agendamentos")
-                        .HasForeignKey("MedicoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MedicoId");
                 });
 
             modelBuilder.Entity("Domain.Models.Medico", b =>
                 {
                     b.HasOne("Domain.Models.Especialidade", "Especialidade")
                         .WithMany("Medicos")
-                        .HasForeignKey("EspecialidadeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EspecialidadeId");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,10 +1,8 @@
 ﻿using Core.Models;
 using System;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Models
 {
-    [Table("cadguia")]
     public class Guia : BaseModel
     {
         public long CodGuia { get; set; }

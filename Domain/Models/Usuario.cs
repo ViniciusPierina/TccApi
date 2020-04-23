@@ -1,10 +1,7 @@
 ﻿using Core.Models;
-using System;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Models
 {
-    [Table("cadusu")]
     public class Usuario : BaseModel
     {
         public string CodUsu { get; set; }
