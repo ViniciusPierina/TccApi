@@ -1,13 +1,11 @@
 ﻿using Core.CQRS;
-using Domain.Models;
 using System;
 
 namespace Domain.Commands
 {
     public class UpdateUsuarioCommand : Command
     {
-        public UpdateUsuarioCommand(Guid id, string codUsu, string nome, string cpf, string status, string sexo,
-            string situUsu)
+        public UpdateUsuarioCommand(Guid id, string codUsu, string nome, string cpf, string status, string sexo, string situUsu)
         {
             Id = id;
             CodUsu = codUsu;

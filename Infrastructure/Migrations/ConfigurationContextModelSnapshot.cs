@@ -101,9 +101,6 @@ namespace Infrastructure.Migrations
                     b.Property<string>("Codespec")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<bool>("Deleted")
                         .HasColumnType("bit");
 

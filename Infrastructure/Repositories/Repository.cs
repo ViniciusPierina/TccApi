@@ -4,7 +4,6 @@ using Infrastructure.Configurations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Infrastructure.Repositories
 {
@@ -37,12 +36,14 @@ namespace Infrastructure.Repositories
             var t = Find(id);
             t.Deleted = true;
             _context.Set<T>().Update(t);
+            _context.Entry(t).Property(x => x.CreationDate).IsModified = false;
             _context.SaveChanges();
         }
 
         public void Update(T t)
         {
             _context.Set<T>().Update(t);
+            _context.Entry(t).Property(x => x.CreationDate).IsModified = false;
             _context.SaveChanges();
         }
     }
