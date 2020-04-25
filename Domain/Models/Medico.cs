@@ -1,11 +1,9 @@
 ﻿using Core.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Models
 {
-    [Table("cadprest")]
     public class Medico : BaseModel
     {
         public string Codprest { get; set; }
@@ -22,7 +20,7 @@ namespace Domain.Models
         public string Rede { get; set; }
         public string Crmprest { get; set; }
         public Especialidade Especialidade { get; set; }
-        //public Guid EspecialidadeId { get; set; }
+        public Guid EspecialidadeId { get; set; }
         public ICollection<Agendamento> Agendamentos { get; set; }
     }
 }

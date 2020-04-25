@@ -1,7 +1,5 @@
 ﻿using Core.CQRS;
-using Domain.Models;
 using System;
-using System.Collections.Generic;
 
 namespace Domain.Commands
 {
@@ -9,8 +7,7 @@ namespace Domain.Commands
     {
         public UpdateMedicoCommand(Guid id, string codPrest, string nomePrest, string tipoPrest, string endPrest,
             string baiPrest, string cidPrest, string categPrest, string fonePrest, string codeSp, long status,
-            string conselho, string rede, string crmPrest, Especialidade especialidade, Guid especialidadeId,
-            ICollection<Agendamento> agendamentos)
+            string conselho, string rede, string crmPrest, Guid especialidadeId)
         {
             Id = id;
             Codprest = codPrest;
@@ -26,9 +23,7 @@ namespace Domain.Commands
             Conselho = conselho;
             Rede = rede;
             Crmprest = crmPrest;
-            //Especialidade = especialidade;
-            //EspecialidadeId = especialidadeId;
-            //Agendamentos = agendamentos;
+            EspecialidadeId = especialidadeId;
         }
         public Guid Id { get; set; }
         public string Codprest { get; set; }
@@ -44,8 +39,6 @@ namespace Domain.Commands
         public string Conselho { get; set; }
         public string Rede { get; set; }
         public string Crmprest { get; set; }
-        public Especialidade Especialidade { get; set; }
-        //public Guid EspecialidadeId { get; set; }
-        public ICollection<Agendamento> Agendamentos { get; set; }
+        public Guid EspecialidadeId { get; set; }
     }
 }

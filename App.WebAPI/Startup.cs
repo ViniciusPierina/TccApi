@@ -16,6 +16,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 using Services.Mappings;
 using Services.Services;
 using Services.Services.Interfaces;
@@ -44,11 +45,11 @@ namespace App.WebAPI
             services.AddScoped<IEspecialidadeService, EspecialidadeService>();
 
             services.AddScoped<IRepository<Guia>, Repository<Guia>>();
-            services.AddScoped<IRepository<Agendamento>, Repository<Agendamento>>();
+            services.AddScoped<IRepository<Agendamento>, AgendamentoRepository>();
             services.AddScoped<IRepository<Contrato>, Repository<Contrato>>();
-            services.AddScoped<IRepository<Medico>, Repository<Medico>>();
+            services.AddScoped<IRepository<Medico>, MedicoRepository>();
             services.AddScoped<IRepository<Usuario>, Repository<Usuario>>();
-            services.AddScoped<IRepository<Especialidade>, Repository<Especialidade>>();
+            services.AddScoped<IRepository<Especialidade>, EspecialidadeRepository>();
 
             services.AddScoped<IHandler<CreateGuiaCommand>, GuiaCommandHandler>();
             services.AddScoped<IHandler<UpdateGuiaCommand>, GuiaCommandHandler>();
@@ -84,7 +85,13 @@ namespace App.WebAPI
 
             services.AddDbContext<ConfigurationContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services
+                .AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                .AddNewtonsoftJson(options =>
+                {
+                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                });
 
             services.AddRazorPages();
         }

@@ -1,7 +1,5 @@
 ﻿using Core.Models;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Domain.Models
 {
@@ -13,5 +11,6 @@ namespace Domain.Models
         public DateTime HoraConsulta { get; set; }
         public bool Status { get; set; }
         public Medico Medico { get; set; }
+        public Guid MedicoId { get; set; }
     }
 }
