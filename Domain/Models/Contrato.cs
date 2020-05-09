@@ -1,4 +1,5 @@
 ﻿using Core.Models;
+using System.Collections.Generic;
 
 namespace Domain.Models
 {
@@ -8,5 +9,6 @@ namespace Domain.Models
         public string Nometit { get; set; }
         public string Situcont { get; set; }
         public string Cpftit { get; set; }
+        public ICollection<Usuario> Usuarios { get; set; }
     }
 }

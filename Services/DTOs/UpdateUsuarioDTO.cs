@@ -11,5 +11,6 @@ namespace Services.DTOs
         public string Status { get; set; }
         public string Sexo { get; set; }
         public string Situusu { get; set; }
+        public Guid ContratoId { get; set; }
     }
 }

@@ -15,6 +15,7 @@ namespace Services.Services
         private readonly IRepository<Usuario> _repository;
         private readonly IMapper _mapper;
         private readonly IBus _bus;
+        
         public UsuarioService(IRepository<Usuario> repository, IMapper mapper, IBus bus)
         {
             _repository = repository;

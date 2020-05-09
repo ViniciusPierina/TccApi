@@ -1,5 +1,4 @@
 ﻿using Core.CQRS;
-using Domain.Models;
 using System;
 
 namespace Domain.Commands
@@ -7,7 +6,7 @@ namespace Domain.Commands
     public class CreateUsuarioCommand : Command
     {
         public CreateUsuarioCommand(string codUsu, string nome, string cpf, string status, string sexo,
-            string situUsu)
+            string situUsu, Guid contratoId)
         {
             CodUsu = codUsu;
             Nome = nome;
@@ -15,6 +14,7 @@ namespace Domain.Commands
             Status = status;
             Sexo = sexo;
             Situusu = situUsu;
+            ContratoId = contratoId;
         }
         public string CodUsu { get; set; }
         public string Nome { get; set; }
@@ -22,5 +22,6 @@ namespace Domain.Commands
         public string Status { get; set; }
         public string Sexo { get; set; }
         public string Situusu { get; set; }
+        public Guid ContratoId { get; set; }
     }
 }

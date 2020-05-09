@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Services.DTOs
 {
@@ -9,5 +10,6 @@ namespace Services.DTOs
         public string Nometit { get; set; }
         public string Situcont { get; set; }
         public string Cpftit { get; set; }
+        public ICollection<UsuarioDTO> Usuarios { get; set; }
     }
 }
