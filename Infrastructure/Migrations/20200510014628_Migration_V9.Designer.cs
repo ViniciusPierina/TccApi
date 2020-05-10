@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ConfigurationContext))]
-    [Migration("20200509140122_Migration_V8")]
-    partial class Migration_V8
+    [Migration("20200510014628_Migration_V9")]
+    partial class Migration_V9
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -130,64 +130,40 @@ namespace Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("CodEspecMedico")
-                        .HasColumnType("int");
+                    b.Property<string>("CodAtend")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<long>("CodGuia")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CodPaciente")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CodPrestExecutante")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CodPrestSolicitante")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CodProcedimento")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DataAgendamento")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DataEmissao")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DataVencimento")
+                    b.Property<DateTime>("DataEmi")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("Deleted")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("HoraAgendamento")
+                    b.Property<DateTime>("Hora")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("HoraEmissao")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("HoraVencimento")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("NomePaciente")
+                    b.Property<string>("Origem")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TipoCons")
-                        .HasColumnType("int");
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TipoGuia")
-                        .HasColumnType("int");
+                    b.Property<string>("TipoCons")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("ValorConsulta")
-                        .HasColumnType("real");
+                    b.Property<DateTime>("ValidGuia")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CodPaciente", "CodEspecMedico", "CodProcedimento")
-                        .HasAnnotation("SqlServer:Clustered", false);
+                    b.HasIndex("CodGuia")
+                        .IsUnique();
 
                     b.ToTable("Guias");
                 });

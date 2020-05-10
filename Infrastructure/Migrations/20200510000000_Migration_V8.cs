@@ -13,12 +13,6 @@ namespace Infrastructure.Migrations
                 nullable: false,
                 defaultValue: new Guid("00000000-0000-0000-0000-000000000000"));
 
-            migrationBuilder.AddColumn<DateTime>(
-                name: "CreationDate",
-                table: "Especialidades",
-                nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
-
             migrationBuilder.CreateIndex(
                 name: "IX_Usuarios_ContratoId",
                 table: "Usuarios",
@@ -46,10 +40,6 @@ namespace Infrastructure.Migrations
             migrationBuilder.DropColumn(
                 name: "ContratoId",
                 table: "Usuarios");
-
-            migrationBuilder.DropColumn(
-                name: "CreationDate",
-                table: "Especialidades");
         }
     }
 }
