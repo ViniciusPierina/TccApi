@@ -21,6 +21,23 @@ namespace Domain.Models
         public DateTime HoraVencimento { get; set; }
         public int CodProcedimento { get; set; }
         public float ValorConsulta { get; set; }
+
+
+        //public long CodGuia { get; set; }
+        //public string CodSolicitante { get; set; }
+        //public string CodPrestador { get; set; }
+        //public string CodTit { get; set; }
+        //public string CodUsu { get; set; }
+        //public string CodAgendamento { get; set; }
+        //public string CodLocal { get; set; }
+        //public string CodEspec_Prest { get; set; }
+        //public DateTime DataEmi { get; set; }
+        //public DateTime Hora { get; set; }
+        //public string CodAtend { get; set; }
+        //public DateTime ValidGuia { get; set; }
+        //public string TipoCons { get; set; }
+        //public string Origem { get; set; }
+        //public string Status { get; set; }
     }
 }
 
