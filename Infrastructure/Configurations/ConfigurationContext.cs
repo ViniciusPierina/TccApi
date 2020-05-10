@@ -46,7 +46,7 @@ namespace Infrastructure.Configurations
             builder.Entity<Agendamento>().HasIndex(entity => new {entity.DataConsulta, entity.CodMedico}).IsClustered(false);
             builder.Entity<Contrato>().HasIndex(x => x.Codtit).IsUnique();
             builder.Entity<Especialidade>().HasIndex(x => x.Codespec).IsUnique();
-            builder.Entity<Guia>().HasIndex(entity => new { entity.CodPaciente, entity.CodEspecMedico, entity.CodProcedimento }).IsClustered(false);
+            builder.Entity<Guia>().HasIndex(x => x.CodGuia).IsUnique();
             builder.Entity<Medico>().HasIndex(x => x.Codprest).IsUnique();
             builder.Entity<Usuario>().HasIndex(x => x.CodUsu).IsUnique();
 
