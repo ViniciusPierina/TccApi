@@ -13,5 +13,7 @@ namespace Services.DTOs
         public string TipoCons { get; set; }
         public string Origem { get; set; }
         public string Status { get; set; }
+        public ContratoDTO Contrato { get; set; }
+        public MedicoDTO Medico { get; set; }
     }
 }

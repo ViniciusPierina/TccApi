@@ -19,6 +19,7 @@ namespace Infrastructure.Repositories
             return _context
                 .Set<Contrato>()
                 .Include(contrato => contrato.Usuarios)
+                .Include(contrato => contrato.Guia)
                 .FirstOrDefaultAsync(contrato => contrato.Id == id).Result;
         }
     }

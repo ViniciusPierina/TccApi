@@ -20,6 +20,7 @@ namespace Infrastructure.Repositories
                 .Set<Medico>()
                 .Include(medico => medico.Especialidade)
                 .Include(medico => medico.Agendamentos)
+                .Include(medico => medico.Guia)
                 .FirstOrDefaultAsync(medico => medico.Id == id).Result;
         }
     }

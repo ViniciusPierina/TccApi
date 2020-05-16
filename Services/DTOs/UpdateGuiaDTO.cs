@@ -13,5 +13,7 @@ namespace Services.DTOs
         public string TipoCons { get; set; }
         public string Origem { get; set; }
         public string Status { get; set; }
+        public Guid MedicoId { get; set; }
+        public Guid ContratoId { get; set; }
     }
 }

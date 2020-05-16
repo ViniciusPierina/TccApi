@@ -7,7 +7,7 @@ namespace Domain.Commands
     {
         public UpdateMedicoCommand(Guid id, string codPrest, string nomePrest, string tipoPrest, string endPrest,
             string baiPrest, string cidPrest, string categPrest, string fonePrest, string codeSp, long status,
-            string conselho, string rede, string crmPrest, Guid especialidadeId)
+            string conselho, string rede, string crmPrest, Guid especialidadeId, Guid guiaId)
         {
             Id = id;
             Codprest = codPrest;
@@ -24,6 +24,7 @@ namespace Domain.Commands
             Rede = rede;
             Crmprest = crmPrest;
             EspecialidadeId = especialidadeId;
+            GuiaId = guiaId;
         }
         public Guid Id { get; set; }
         public string Codprest { get; set; }
@@ -40,5 +41,6 @@ namespace Domain.Commands
         public string Rede { get; set; }
         public string Crmprest { get; set; }
         public Guid EspecialidadeId { get; set; }
+        public Guid GuiaId { get; set; }
     }
 }

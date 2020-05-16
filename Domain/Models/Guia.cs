@@ -13,6 +13,10 @@ namespace Domain.Models
         public string TipoCons { get; set; }
         public string Origem { get; set; }
         public string Status { get; set; }
+        public Guid MedicoId { get; set; }
+        public Guid ContratoId { get; set; }
+        public Medico Medico { get; set; }
+        public Contrato Contrato { get; set; }
     }
 }
 

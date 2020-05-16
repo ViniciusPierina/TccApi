@@ -21,5 +21,6 @@ namespace Services.DTOs
         public string Crmprest { get; set; }
         public EspecialidadeDTO Especialidade { get; set; }
         public ICollection<AgendamentoDTO> Agendamentos { get; set; }
+        public GuiaDTO Guia { get; set; }
     }
 }

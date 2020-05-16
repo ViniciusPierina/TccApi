@@ -22,5 +22,7 @@ namespace Domain.Models
         public Especialidade Especialidade { get; set; }
         public Guid EspecialidadeId { get; set; }
         public ICollection<Agendamento> Agendamentos { get; set; }
+        public Guid GuiaId { get; set; }
+        public Guia Guia { get; set; }
     }
 }

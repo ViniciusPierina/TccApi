@@ -18,5 +18,6 @@ namespace Services.DTOs
         public string Rede { get; set; }
         public string Crmprest { get; set; }
         public Guid EspecialidadeId { get; set; }
+        public Guid GuiaId { get; set; }
     }
 }

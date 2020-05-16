@@ -53,7 +53,11 @@ namespace Infrastructure.Configurations
             // Chaves Estrangeiras / Relacionamentos
             builder.Entity<Medico>().HasOne(x => x.Especialidade).WithMany(x => x.Medicos).HasForeignKey(x => x.EspecialidadeId);
             builder.Entity<Medico>().HasMany(x => x.Agendamentos).WithOne(x => x.Medico);
+            builder.Entity<Medico>().HasOne(x => x.Guia).WithOne(x => x.Medico);
             builder.Entity<Contrato>().HasMany(x => x.Usuarios).WithOne(x => x.Contrato);
+            builder.Entity<Contrato>().HasOne(x => x.Guia).WithOne(x => x.Contrato);
+            builder.Entity<Guia>().HasOne(x => x.Medico).WithOne(x => x.Guia);
+            builder.Entity<Guia>().HasOne(x => x.Contrato).WithOne(x => x.Guia);
         }
     }
 }

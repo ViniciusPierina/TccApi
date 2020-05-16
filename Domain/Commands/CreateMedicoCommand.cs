@@ -7,7 +7,7 @@ namespace Domain.Commands
     {
         public CreateMedicoCommand(string codPrest, string nomePrest, string tipoPrest, string endPrest, string baiPrest, 
             string cidPrest, string categPrest, string fonePrest, string codeSp, long status, string conselho,
-            string rede, string crmPrest, Guid especialidadeId)
+            string rede, string crmPrest, Guid especialidadeId, Guid guiaId)
         {
             Codprest = codPrest;
             Nomeprest = nomePrest;
@@ -23,6 +23,7 @@ namespace Domain.Commands
             Rede = rede;
             Crmprest = crmPrest;
             EspecialidadeId = especialidadeId;
+            GuiaId = guiaId;
     }
         public string Codprest { get; set; }
         public string Nomeprest { get; set; }
@@ -38,5 +39,6 @@ namespace Domain.Commands
         public string Rede { get; set; }
         public string Crmprest { get; set; }
         public Guid EspecialidadeId { get; set; }
+        public Guid GuiaId { get; set; }
     }
 }

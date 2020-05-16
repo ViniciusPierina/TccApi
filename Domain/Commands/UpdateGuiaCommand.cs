@@ -6,7 +6,7 @@ namespace Domain.Commands
     public class UpdateGuiaCommand : Command
     {
         public UpdateGuiaCommand(Guid id, int codGuia, DateTime dataEmi, DateTime hora, string codAtend,
-            DateTime validGuia, string tipoCons, string origem, string status)
+            DateTime validGuia, string tipoCons, string origem, string status, Guid medicoId, Guid contratoId)
         {
             Id = id;
             CodGuia = codGuia;
@@ -17,6 +17,8 @@ namespace Domain.Commands
             TipoCons = tipoCons;
             Origem = origem;
             Status = status;
+            MedicoId = medicoId;
+            ContratoId = contratoId;
         }
         public Guid Id { get; set; }
         public long CodGuia { get; set; }
@@ -27,5 +29,7 @@ namespace Domain.Commands
         public string TipoCons { get; set; }
         public string Origem { get; set; }
         public string Status { get; set; }
+        public Guid MedicoId { get; set; }
+        public Guid ContratoId { get; set; }
     }
 }
