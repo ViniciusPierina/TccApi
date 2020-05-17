@@ -56,8 +56,8 @@ namespace Infrastructure.Configurations
             builder.Entity<Medico>().HasOne(x => x.Guia).WithOne(x => x.Medico);
             builder.Entity<Contrato>().HasMany(x => x.Usuarios).WithOne(x => x.Contrato);
             builder.Entity<Contrato>().HasOne(x => x.Guia).WithOne(x => x.Contrato);
-            builder.Entity<Guia>().HasOne(x => x.Medico).WithOne(x => x.Guia);
-            builder.Entity<Guia>().HasOne(x => x.Contrato).WithOne(x => x.Guia);
+            builder.Entity<Guia>().HasOne(x => x.Medico).WithOne(x => x.Guia).HasForeignKey<Guia>(x => x.MedicoId);
+            builder.Entity<Guia>().HasOne(x => x.Contrato).WithOne(x => x.Guia).HasForeignKey<Guia>(x => x.ContratoId);
         }
     }
 }
