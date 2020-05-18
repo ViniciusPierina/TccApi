@@ -19,7 +19,11 @@ namespace Infrastructure.Repositories
             return _context
                 .Set<Guia>()
                 .Include(guia => guia.Medico)
+                .ThenInclude(medico => medico.Especialidade)
+                .Include(guia => guia.Medico)
+                .ThenInclude(medico => medico.Agendamentos)
                 .Include(guia => guia.Contrato)
+                .ThenInclude(contrato => contrato.Usuarios)
                 .FirstOrDefaultAsync(guia => guia.Id == id).Result;
         }
     }

@@ -10,5 +10,6 @@ namespace Services.DTOs
         public string Nometit { get; set; }
         public string Situcont { get; set; }
         public string Cpftit { get; set; }
+        public Guid GuiaId { get; set; }
     }
 }

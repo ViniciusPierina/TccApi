@@ -44,11 +44,11 @@ namespace App.WebAPI
             services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddScoped<IEspecialidadeService, EspecialidadeService>();
 
-            services.AddScoped<IRepository<Guia>, Repository<Guia>>();
+            services.AddScoped<IRepository<Guia>, GuiaRepository>();
             services.AddScoped<IRepository<Agendamento>, AgendamentoRepository>();
-            services.AddScoped<IRepository<Contrato>, Repository<Contrato>>();
+            services.AddScoped<IRepository<Contrato>, ContratoRepository>();
             services.AddScoped<IRepository<Medico>, MedicoRepository>();
-            services.AddScoped<IRepository<Usuario>, Repository<Usuario>>();
+            services.AddScoped<IRepository<Usuario>, UsuarioRepository>();
             services.AddScoped<IRepository<Especialidade>, EspecialidadeRepository>();
 
             services.AddScoped<IHandler<CreateGuiaCommand>, GuiaCommandHandler>();
