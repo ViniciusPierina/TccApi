@@ -11,7 +11,6 @@ namespace Domain.Models
         public string Situcont { get; set; }
         public string Cpftit { get; set; }
         public ICollection<Usuario> Usuarios { get; set; }
-        public Guid GuiaId { get; set; }
-        public Guia Guia { get; set; }
+        public ICollection<Guia> Guias { get; set; }
     }
 }
