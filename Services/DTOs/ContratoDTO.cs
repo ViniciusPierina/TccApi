@@ -11,6 +11,6 @@ namespace Services.DTOs
         public string Situcont { get; set; }
         public string Cpftit { get; set; }
         public ICollection<UsuarioDTO> Usuarios { get; set; }
-        public GuiaDTO Guia { get; set; }
+        public ICollection<GuiaDTO> Guias { get; set; }
     }
 }
