@@ -15,12 +15,14 @@ namespace Services.Services
         private readonly IRepository<Guia> _repository;
         private readonly IMapper _mapper;
         private readonly IBus _bus;
+        private readonly IContratoService _contratoService;
 
-        public GuiaService(IRepository<Guia> repository, IMapper mapper, IBus bus)
+        public GuiaService(IRepository<Guia> repository, IMapper mapper, IBus bus, IContratoService contratoService)
         {
             _repository = repository;
             _mapper = mapper;
             _bus = bus;
+            _contratoService = contratoService;
         }
         public void Delete(Guid id)
         {
@@ -50,6 +52,11 @@ namespace Services.Services
         public void Save(CreateGuiaDTO model)
         {
             var guia = _mapper.Map<CreateGuiaCommand>(model);
+            var contrato = _contratoService.Get(model.ContratoId);
+
+            if (contrato.Situcont == "Inativo")
+                throw new ArgumentException("O contrato do titular está inativo");
+
             _bus.SendCommand(guia);
         }
 
