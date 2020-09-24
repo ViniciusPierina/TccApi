@@ -7,6 +7,7 @@ using Domain.Models;
 using Infrastructure.Bus;
 using Infrastructure.Configurations;
 using Infrastructure.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -15,11 +16,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
+using Services;
 using Services.Mappings;
 using Services.Services;
 using Services.Services.Interfaces;
+using System.Text;
 
 namespace App.WebAPI
 {
@@ -35,6 +39,7 @@ namespace App.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddControllers();
 
             services.AddScoped<IGuiaService, GuiaService>();
@@ -50,6 +55,7 @@ namespace App.WebAPI
             services.AddScoped<IRepository<Medico>, MedicoRepository>();
             services.AddScoped<IRepository<Usuario>, UsuarioRepository>();
             services.AddScoped<IRepository<Especialidade>, EspecialidadeRepository>();
+            services.AddScoped<ILoginRepository, LoginRepository>();
 
             services.AddScoped<IHandler<CreateGuiaCommand>, GuiaCommandHandler>();
             services.AddScoped<IHandler<UpdateGuiaCommand>, GuiaCommandHandler>();
@@ -94,6 +100,27 @@ namespace App.WebAPI
                 });
 
             services.AddRazorPages();
+
+            var key = Encoding.ASCII.GetBytes(Settings.Secret);
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -117,12 +144,21 @@ namespace App.WebAPI
 
             app.UseRouting();
 
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
         }
 
         private static void ConfigureAutomapper(IServiceCollection services)
