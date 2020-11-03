@@ -23,5 +23,12 @@ namespace Infrastructure.Repositories
                 .Set<Usuario>()
                 .FirstOrDefaultAsync(usuario => usuario.Email == email && usuario.Cpf == cpf).Result;
         }
+
+        public Medico GetMedicoLogin(string conselho, string crmprest)
+        {
+            return _context
+                .Set<Medico>()
+                .FirstOrDefaultAsync(medico => medico.Conselho == conselho && medico.Crmprest == crmprest).Result;
+        }
     }
 }

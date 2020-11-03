@@ -30,8 +30,27 @@ namespace App.WebAPI.Controllers
             if (user == null)
                 return NotFound(new { message = "Usuário ou senha inválidos" });
 
-            var token = TokenService.GenerateToken(user);
+            var token = TokenService.GenerateUsuarioToken(user);
             user.Cpf = "";
+            return new
+            {
+                user = user,
+                token = token
+            };
+        }
+
+        [HttpPost]
+        [Route("loginMedico")]
+        [AllowAnonymous]
+        public async Task<ActionResult<dynamic>> AuthenticateMedico([FromBody]Medico model)
+        {
+            var user = _repository.GetMedicoLogin(model.Conselho, model.Crmprest);
+
+            if (user == null)
+                return NotFound(new { message = "Conselho ou CRM inválidos" });
+
+            var token = TokenService.GenerateMedicoToken(user);
+            user.Crmprest = "";
             return new
             {
                 user = user,
