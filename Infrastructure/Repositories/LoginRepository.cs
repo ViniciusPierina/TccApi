@@ -17,7 +17,7 @@ namespace Infrastructure.Repositories
             _context = context;
         }
 
-        public Usuario GetLogin(string email, string cpf)
+        public Usuario GetUsuarioLogin(string email, string cpf)
         {
             return _context
                 .Set<Usuario>()

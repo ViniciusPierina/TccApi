@@ -25,7 +25,7 @@ namespace App.WebAPI.Controllers
         [AllowAnonymous]
         public async Task<ActionResult<dynamic>> Authenticate([FromBody]Usuario model)
         {
-            var user = _repository.GetLogin(model.Email, model.Cpf);
+            var user = _repository.GetUsuarioLogin(model.Email, model.Cpf);
 
             if (user == null)
                 return NotFound(new { message = "Usuário ou senha inválidos" });
