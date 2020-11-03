@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Services.DTOs;
 using Services.Services.Interfaces;
 using System;
@@ -24,6 +25,7 @@ namespace App.WebAPI.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public ActionResult<ContratoDTO> GetById(Guid id)
         {
             var contrato = _contratoService.Get(id);
