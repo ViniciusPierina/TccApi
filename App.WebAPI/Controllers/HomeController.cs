@@ -25,13 +25,32 @@ namespace App.WebAPI.Controllers
         [AllowAnonymous]
         public async Task<ActionResult<dynamic>> Authenticate([FromBody]Usuario model)
         {
-            var user = _repository.GetLogin(model.Email, model.Cpf);
+            var user = _repository.GetUsuarioLogin(model.Email, model.Cpf);
 
             if (user == null)
                 return NotFound(new { message = "Usuário ou senha inválidos" });
 
-            var token = TokenService.GenerateToken(user);
+            var token = TokenService.GenerateUsuarioToken(user);
             user.Cpf = "";
+            return new
+            {
+                user = user,
+                token = token
+            };
+        }
+
+        [HttpPost]
+        [Route("loginMedico")]
+        [AllowAnonymous]
+        public async Task<ActionResult<dynamic>> AuthenticateMedico([FromBody]Medico model)
+        {
+            var user = _repository.GetMedicoLogin(model.Conselho, model.Crmprest);
+
+            if (user == null)
+                return NotFound(new { message = "Conselho ou CRM inválidos" });
+
+            var token = TokenService.GenerateMedicoToken(user);
+            user.Crmprest = "";
             return new
             {
                 user = user,

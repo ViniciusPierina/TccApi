@@ -17,11 +17,18 @@ namespace Infrastructure.Repositories
             _context = context;
         }
 
-        public Usuario GetLogin(string email, string cpf)
+        public Usuario GetUsuarioLogin(string email, string cpf)
         {
             return _context
                 .Set<Usuario>()
                 .FirstOrDefaultAsync(usuario => usuario.Email == email && usuario.Cpf == cpf).Result;
+        }
+
+        public Medico GetMedicoLogin(string conselho, string crmprest)
+        {
+            return _context
+                .Set<Medico>()
+                .FirstOrDefaultAsync(medico => medico.Conselho == conselho && medico.Crmprest == crmprest).Result;
         }
     }
 }

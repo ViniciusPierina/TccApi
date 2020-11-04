@@ -7,6 +7,8 @@ namespace Domain.Interfaces
 {
 	public interface ILoginRepository
 	{
-		public Usuario GetLogin(string email, string cpf);
+		public Usuario GetUsuarioLogin(string email, string cpf);
+
+		public Medico GetMedicoLogin(string conselho, string crmprest);
 	}
 }
